@@ -1,0 +1,84 @@
+@use "sass:map";
+@use '../variables/variables' as var;
+@use '../function/function' as fun;
+
+@mixin container {
+    max-width: var.$width-container;
+    margin: 0 auto;
+    padding: 10px 15px;
+}
+
+@mixin flexContainer ($justify: center, $align: center, $direction: '', $wrap: '') {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+
+    @if $direction !='' {
+        flex-direction: $direction;
+    }
+
+    @if $wrap !='' {
+        flex-wrap: $wrap;
+    }
+}
+
+@mixin media ($device) {
+    @media screen and (max-width: map-get(var.$breakpoints, $device)) {
+        @content;
+    }
+}
+
+@mixin typography ($size: 16, $weight: 500, $height: 28, $color: rgb(255, 255, 255)) {
+    font-family: Chakra Petch;
+    font-size: #{$size}px;
+    font-weight: $weight;
+    line-height: #{$height}px;
+    color: $color;
+}
+
+@mixin border-image ($color: linear-gradient(to left, #E95CE9, #0CBAF1)) {
+    border: 1px solid;
+    border-width: 1px;
+    border-image-source: $color;
+    border-image-slice: 1;
+}
+
+@mixin position-point($variable, $brekpoint, $children) {
+    top: map.get(map.get($variable, $brekpoint, $children), 'top');
+    left: map.get(map.get($variable, $brekpoint, $children), 'left');
+}
+
+@mixin circle($brekpoint) {
+    @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+            @if $brekpoint =='large' {
+                width: calc(#{var.$width-container} - #{$i - 1} * 180px);
+                padding-bottom: calc(#{var.$width-container} - #{$i - 1} * 180px);
+            }
+
+            .block {
+                @include position-point(var.$client-coordinates, $brekpoint, $i);
+            }
+
+            @if $brekpoint =="small" {
+                .tooltip {
+                    width: 227px;
+                    @include position-point(var.$tooltip-coordinates, $brekpoint, $i)
+                }
+
+                .tooltipBg {
+                    clip-path: fun.get-style($i, var.$small-breakpoint-Bg, var.$large-breakpoint-Bg);
+                }
+
+                .border {
+                    background: fun.get-style($i, var.$small-breakpoint-border-style, var.$large-breakpoint-border-style);
+                    clip-path: fun.get-style($i, var.$small-breakpoint-border, var.$large-breakpoint-border)
+                }
+
+                .content {
+                    margin-left: fun.get-style($i, 15px, 30px)
+                }
+            }
+        }
+    }
+}

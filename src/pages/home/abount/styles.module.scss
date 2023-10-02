@@ -1,0 +1,148 @@
+@use '../../../styles/mixin/mixins' as mixins;
+@use '../../../styles/variables/variables' as var;
+@use '../../../styles/placeholder/placeholders' as *;
+
+.about {
+    @include mixins.container;
+    @include mixins.flexContainer(space-between, flex-end);
+    margin-top: 120px;
+    margin-bottom: 153px;
+
+    @media screen and (max-width: 1200px) {
+        align-items: center;
+    }
+
+    @media screen and (max-width: 970px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.bg {
+    width: 100%;
+    max-width: 608px;
+    height: 622px;
+    position: relative;
+
+    @media screen and (max-width: 1200px) {
+        margin-bottom: 55px;
+        align-items: center;
+    }
+}
+
+.img {
+    width: 100%;
+    max-width: 540px;
+    height: 622px;
+    background-image: url('../../../../public/bg/about-hero.png'), url('../../../../public/bg/about-bg.png');
+    background-position: right bottom, left bottom;
+    background-repeat: no-repeat;
+    background-size: contain, 400px 500px;
+}
+
+.illumination {
+    @extend %illumination;
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    left: 80px;
+    width: 100%;
+    max-width: 354px;
+    height: 508px;
+
+    @media screen and (max-width: 450px) {
+        top: 150px;
+        left: 30px;
+    }
+}
+
+.video {
+    position: absolute;
+    bottom: -23px;
+    right: 110px;
+}
+
+.description {
+    max-width: 562px;
+
+    @media screen and (max-width: 1120px) {
+        max-width: 462px;
+    }
+
+    @media screen and (max-width: 970px) {
+        max-width: 562px;
+    }
+
+}
+
+.title {
+    @include mixins.typography(16, 500);
+    @extend %gradient-text;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(14, 500);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(16, 500);
+    }
+
+}
+
+.subtitle {
+    @include mixins.typography(48, 600, 58);
+    letter-spacing: -0.24px;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(40, 600, 58);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(48, 600, 58);
+    }
+}
+
+.text {
+    @include mixins.typography(16, 300, 28);
+    color: var.$text-color;
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(14, 300, 28);
+        color: var.$text-color;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(16, 300, 28);
+        color: var.$text-color;
+    }
+}
+
+.services {
+    margin-top: 24px;
+}
+
+.serviceText {
+    @include mixins.typography(16, 400, 28);
+}
+
+.service {
+    @include mixins.flexContainer(flex-start);
+
+    img {
+        margin-right: 12px;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 14px;
+    }
+}
+
+.button {
+    @include mixins.typography(14, 700, 14);
+    @extend %button;
+    margin-top: 32px;
+}

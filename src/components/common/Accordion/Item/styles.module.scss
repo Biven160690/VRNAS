@@ -1,0 +1,59 @@
+@use '../../../../styles/mixin/mixins' as *;
+@use '../../../../styles/variables/variables' as *;
+
+.base {
+    position: relative;
+
+    &:not(:first-child) {
+        margin-top: 40px;
+    }
+}
+
+.titleBlock {
+    @include flexContainer(space-between, center);
+    border-bottom: 1px solid rgba(255, 255, 255, .35);
+    padding: 12px 0;
+}
+
+.arrow {
+    transform: rotate(180deg);
+    transform-origin: center;
+
+    .base_showDescription & {
+        transform: rotate(0deg);
+    }
+}
+
+.button {
+    width: 7.5px;
+    height: 16px;
+    background: 0 0;
+    border: 0;
+    cursor: pointer;
+    opacity: .7;
+    transition: opacity .3s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.title {
+    @include typography(20, 500);
+    text-align: start;
+}
+
+.description {
+    @include typography(16, 400);
+    max-height: 0;
+    color: $text-color;
+    margin-top: 15px;
+    overflow: hidden;
+    transition: max-height .4s;
+
+    .base_showDescription & {
+        transition: max-height .7s;
+
+        max-height: 250px;
+    }
+}    

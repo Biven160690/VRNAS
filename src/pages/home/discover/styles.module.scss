@@ -1,0 +1,166 @@
+@use '../../../styles/mixin/mixins' as mixins;
+@use '../../../styles/variables/variables' as var;
+@use '../../../styles/placeholder/placeholders' as *;
+
+.discover {
+    @include mixins.container;
+    position: relative;
+    margin-bottom: 120px;
+}
+
+.hero {
+    position: absolute;
+    z-index: 1;
+    top: -47.5px;
+    right: 9px;
+    width: 540px;
+    height: 642px;
+    background: url('../../../../public/bg/hero.png') no-repeat center / cover;
+
+    @media screen and (max-width: 1200px) {
+        top: 140px;
+    }
+
+    @media screen and (max-width: 950px) {
+        top: 275px;
+        width: 354px;
+        height: 422px;
+        right: -50px;
+    }
+
+    @media screen and (max-width: 650px) {
+        top: 375px;
+        width: 254px;
+        height: 322px;
+    }
+
+    @media screen and (max-width: 460px) {
+        top: 395px;
+        width: 234px;
+        height: 302px;
+    }
+}
+
+.light {
+    @extend %illumination;
+    position: absolute;
+    top: 100px;
+    left: 110px;
+    width: 284px;
+    height: 508px;
+
+    @media screen and (max-width: 950px) {
+        top: 80px;
+        left: 50px;
+        width: 204px;
+        height: 408px;
+    }
+
+    @media screen and (max-width: 650px) {
+        top: 30px;
+        left: 0px;
+        width: 154px;
+        height: 408px;
+    }
+}
+
+.content {
+    margin-bottom: 66px;
+}
+
+.description {
+    max-width: 540px;
+    margin-bottom: 32px;
+
+    @media screen and (max-width: 950px) {
+        max-width: 460px;
+    }
+}
+
+.title {
+    @include mixins.typography(54, 600, 83);
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(50, 600, 83);
+    }
+
+    @media screen and (max-width: 950px) {
+        @include mixins.typography(40, 600, 53);
+    }
+}
+
+.text {
+    @include mixins.typography(16, 300);
+    max-width: 486px;
+    color: var.$text-color;
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(15, 300);
+        color: var.$text-color;
+        max-width: 400px;
+    }
+}
+
+.button {
+    @include mixins.typography(14, 700, 14);
+    @extend %button;
+    margin-bottom: 81px;
+}
+
+
+.clients {
+    @include mixins.container;
+    display: flex;
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.flexContainer(flex-start, flex-start, column);
+    
+        & > div:last-child {
+            margin-top: 150px;
+            margin-left: 0;
+        }
+    }
+}
+
+.block {
+    @include mixins.flexContainer(flex-start, center);
+
+    & > img:not(:first-child) {
+        margin-left: -10px;
+    }
+}
+
+.amountBlock {
+    @include mixins.flexContainer;
+    position: relative;
+    margin-left: 18px;
+
+    & + p {
+        @include mixins.typography(16, 300);
+        margin-left: 5px;
+        color: var.$text-color;
+    }
+}
+
+.underline {
+    position: absolute;
+    top: 22px;
+    left: -7px;
+    width: 47px;
+    height: 7px;
+    background: url('../../../../public/common/underline.png') no-repeat center / contain;
+}
+
+.amount {
+    @include mixins.typography(16, 600);
+}
+
+.measurement {
+    @include mixins.typography(14, 600);
+}
+
+.video {
+    margin-left: 74px;
+}
+
+

@@ -1,0 +1,82 @@
+@use '../../../styles/mixin/mixins' as *;
+
+.base {
+    @include flexContainer;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+
+    & > button {
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        border: none;
+    }
+}
+
+.play {
+    background: url('../../../../public/common/controllers/28x28/play.png') no-repeat center / contain;
+    position: relative;
+    z-index: 3;
+
+    &__pause,
+    &__replay {
+        display: none;
+    }
+}
+
+.pause {
+    position: relative;
+    z-index: 3;
+    display: none;
+    background: url('../../../../public/common/controllers/28x28/pause.png') no-repeat center / contain;
+    opacity: 0;
+    transition: all .2s;
+
+    &__pause {
+        display: block;
+    }
+
+    &__replay {
+        display: none;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.replay {
+    position: relative;
+    z-index: 3;
+
+    display: none;
+    background: url('../../../../public/common/controllers/28x28/replay.png') no-repeat center / contain;
+
+    &__replay {
+        display: block;
+    }
+}
+
+.video {
+    position: relative;
+    z-index: 1;
+
+    video {
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+}
+
+.children {
+    position: absolute;
+    top: 8%;
+    left: 3%;
+    z-index: 3;
+
+    &_hide {
+        display: none;
+    }
+}

@@ -1,0 +1,175 @@
+@use '../../../styles/mixin/mixins' as mixins;
+@use '../../../styles/variables/variables' as var;
+@use '../../../styles/placeholder/placeholders' as *;
+
+.base {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.titleBlock {
+    max-width: 811px;
+    text-align: start;
+    margin-bottom: 40px;
+}
+
+.title {
+    @include mixins.typography(16, 500);
+    @extend %gradient-text;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(14, 500);
+    }
+}
+
+.subtitle {
+    @include mixins.typography(48, 600, 58);
+    letter-spacing: -0.24px;
+    margin-bottom: 16px;
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(40, 600, 58);
+    }
+}
+
+.text {
+    @include mixins.typography(16, 300, 28, var.$text-color);
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(14, 300, 28, var.$text-color);
+    }
+}
+
+.content {
+    @include mixins.flexContainer(flex-end, flex-end, '', wrap);
+    @include mixins.border-image(linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 100%));
+    position: relative;
+    width: 100%;
+    background: rgba(37, 37, 50, .81);
+    z-index: 5;
+}
+
+.description {
+    flex: 1 1 44%;
+    padding: 50px 180px 50px 42px;
+
+    @media screen and (max-width: 1140px) {
+        padding-right: 42px;
+        flex: 1 1 100%;
+    }
+}
+
+.descriptionBlock {
+    @include mixins.flexContainer(center, flex-start);
+    max-width: 570px;
+
+    &:not(:first-child) {
+        margin-top: 34px;
+    }
+
+    @media screen and (max-width: 1140px) {
+        max-width: 100%;
+    }
+}
+
+.hero {
+    position: relative;
+    flex: 1 1 400px;
+    height: 520px;
+    background: url('../../../../public/bg/pricing-hero.png') no-repeat right bottom / contain;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background: rgba(255, 255, 255, .2);
+    }
+
+    @media screen and (max-width: 650px) {
+        flex: 1 1 300px;
+        height: 400px;
+    }
+
+    @media screen and (max-width: 1140px) {
+        background-position: center;
+
+        &::before {
+            width: 0;
+            height: 0;
+        }
+    }
+}
+
+.descriptionContent {
+    margin-left: 16px;
+}
+
+.descriptionTitle {
+    @include mixins.typography(18, 400, 28);
+    margin-bottom: 12px;
+}
+
+.descriptionText {
+    @include mixins.typography(16, 400, 28, var.$light-grey);
+}
+
+
+.illumination {
+    @extend %illumination;
+    transform: rotate(-100deg);
+    position: absolute;
+    z-index: 1;
+    bottom: -200px;
+    right: 170px;
+    width: 100%;
+    max-width: 354px;
+    height: 800px;
+
+    @media screen and (max-width: 1340px) {
+        right: 238px;
+    }
+}
+
+.priceContent {
+    @include mixins.border-image(var.$main-linear-gradient);
+    position: absolute;
+    bottom: -48px;
+    right: 250px;
+    text-align: center;
+    padding: 20px 70px;
+    background: #252532;
+
+    @media screen and (max-width: 1140px) {
+        bottom: -80px;
+        right: calc(50% - 160px);
+    }
+}
+
+.priceBlock {
+    @include mixins.flexContainer;
+    margin-bottom: 14px;
+}
+
+.currentType,
+.total {
+    @include mixins.typography(60, 600, 66);
+}
+
+.header {
+    @include mixins.typography(14, 500, 20, var.$dark-grey);
+}
+
+.button {
+    @include mixins.typography(14, 700, 14);
+    @extend %button;
+    margin-bottom: 14px;
+}
+
+.periodGuarantee {
+    @include mixins.typography(12, 400, 20, var.$light-grey);
+}

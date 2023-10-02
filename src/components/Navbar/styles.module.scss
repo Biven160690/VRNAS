@@ -1,0 +1,205 @@
+@use '../../styles/mixin/mixins' as *;
+
+.base {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+}
+
+.container {
+    @include container;
+    @include flexContainer;
+}
+
+.column {
+    &:nth-child(odd) {
+        flex: 1;
+    }
+
+    @include media(tablet) {
+        @for $i from 1 through 3 {
+            &:nth-child(4n - #{$i}) {
+                @if $i ==3 {
+                    position: relative;
+                    z-index: 10;
+                }
+
+                @if $i ==2 {
+                    order: 3;
+                    margin-left: 15px;
+                }
+
+                @if $i ==1 {
+                    order: 2;
+                    position: relative;
+                    z-index: 10;
+                }
+            }
+        }
+    }
+}
+
+.iconBlock {
+    display: none;
+
+    @include media(tablet) {
+        @include flexContainer;
+        position: relative;
+        z-index: 10;
+        width: 45px;
+        height: 45px;
+        cursor: pointer;
+        border: 1px solid;
+        border-image-slice: 1;
+        border-width: 1px;
+        border-image-source: linear-gradient(to left, #E95CE9, #0CBAF1);
+        text-align: right;
+        opacity: .7;
+        transition: opacity .3s;
+    }
+}
+
+.icon {
+    $base-width: 10px;
+    @include flexContainer(center, flex-end, column);
+
+    &>div {
+        height: 3px;
+        background: rgba(255, 255, 255, 1);
+        margin: 3px 0;
+        transition: all .6s;
+    }
+
+    @for $i from 1 through 3 {
+        & :nth-child(4n - #{$i}) {
+            width: $base-width * $i;
+        }
+    }
+}
+
+.bar1 {
+    .base_show & {
+        margin: 2px 0;
+        transform: translate(0, 10px) rotate(-45deg);
+    }
+}
+
+.bar2 {
+    .base_show & {
+        opacity: 0;
+    }
+}
+
+.bar3 {
+    .base_show & {
+        width: 30px;
+        margin: 4px 0;
+        transform: translate(0, -8px) rotate(45deg);
+    }
+}
+
+.nav {
+    display: flex;
+    transition: all .6s ease-in-out;
+
+    @include media(tablet) {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        align-items: flex-start;
+        opacity: 0;
+        width: 0;
+        height: 100%;
+
+        .base_show & {
+            animation: show-navbar .6s backwards ease-in-out;
+            background-color: rgba(80, 78, 78, .9);
+            width: 100%;
+            opacity: 1;
+        }
+    }
+}
+
+.links {
+    @include flexContainer;
+    position: relative;
+
+    @include media(tablet) {
+        @include flexContainer(center, flex-start, column);
+        opacity: 0;
+        top: 60px;
+        left: 0;
+        padding-left: 15px;
+    }
+
+    .base_show & {
+        transition: all .4s .3s ease-in-out;
+        opacity: 1;
+    }
+}
+
+.item {
+    position: relative;
+    margin-right: 65px;
+    max-height: 100%;
+
+    a {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 28px;
+        color: rgb(255, 255, 255);
+    }
+
+}
+
+.link {
+    opacity: .7;
+    transition: opacity .3s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.buttonBlock {
+    @include flexContainer(flex-end);
+}
+
+.button {
+    border: 1px solid;
+    border-image-slice: 1;
+    border-width: 1px;
+    border-image-source: linear-gradient(to left, #E95CE9, #0CBAF1);
+    text-align: right;
+    opacity: .7;
+    transition: opacity .3s;
+
+    &:hover {
+        opacity: 1;
+    }
+
+    button {
+        background: none;
+        text-decoration: inherit;
+        font-size: 1rem;
+        padding: 14px 20px;
+        border: none;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+}
+
+@keyframes show-navbar {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 1;
+    }
+}

@@ -1,0 +1,48 @@
+@use '../../../styles//mixin/mixins' as *;
+@use '../../../styles/variables/variables' as *;
+
+.base {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(0deg, #252532, #252532),
+        linear-gradient(94.92deg, rgba(255, 255, 255, .3) -0.29%, rgba(255, 255, 255, 0) 100%);
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(94.92deg, rgba(255, 255, 255, .3) -0.29%, rgba(255, 255, 255, 0) 100%);
+}
+
+.block {
+    @include flexContainer(center, flex-start);
+    padding: 53px 65px;
+
+    @media screen and (max-width: 950px) {
+        flex-wrap: wrap;
+    }
+}
+
+.column {
+    &:not(:first-child) {
+        margin-left: 50px;
+    }
+
+    & > img {
+        margin-bottom: 50px;
+    }
+
+    @media screen and (max-width: 950px) {
+        &:not(:first-child) {
+            margin-left: 0;
+            margin-top: 50px;
+        }
+    }
+}
+
+.title {
+    @include typography(20, 400, 26);
+    margin-bottom: 12px;
+}
+
+.text {
+    @include typography(14, 400);
+    color: $text-color;
+}

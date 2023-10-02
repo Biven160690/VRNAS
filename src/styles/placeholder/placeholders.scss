@@ -1,0 +1,69 @@
+@use '../variables/variables' as  var;
+@use '../mixin/mixins' as mixins;
+
+%button {
+    @include mixins.flexContainer;
+    min-height: 50px;
+    text-transform: uppercase;
+    transform: scale(1);
+    background: var.$main-linear-gradient;
+    cursor: pointer;
+    opacity: .85;
+    border: none;
+    padding: 18px 38px;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+
+}
+
+%illumination {
+    transform: rotate(-120deg);
+    background: linear-gradient(99deg, rgba(28, 196, 249, 0.50) 0.72%, rgba(254, 105, 254, 0.50) 90.69%);
+    filter: blur(75px);
+}
+
+%gradient-text {
+    display: inline-block;
+    letter-spacing: 2.24px;
+    text-transform: uppercase;
+    background: var.$main-linear-gradient;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+%partner {
+    @for $i from 1 through 7 {
+        &:nth-child(#{$i}) {
+            @include mixins.position-point(var.$partner-coordinates, large, $i);
+        }
+    }
+}
+
+%circle {
+    @for $i from 1 through 7 {
+        &:nth-child(#{$i}) {
+            width: calc(#{100%} - #{$i - 1} * 15%);
+            padding-bottom: calc(#{100%} - #{$i - 1} * 15%);
+
+            @if $i == 2 {
+                &::before {
+                    content: "";
+                    position: absolute;
+                    inset: 0;
+                    border-radius: 50%;
+                    padding: 1px;
+                    background: var.$main-linear-gradient;
+                    mask:
+                        linear-gradient(#fff 0 0) content-box,
+                        linear-gradient(#fff 0 0);
+                    mask-composite: xor;
+                }
+            }
+        }
+    }
+}
+

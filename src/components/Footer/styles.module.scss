@@ -1,0 +1,190 @@
+@use '../../styles/mixin/mixins' as *;
+
+.base {
+    position: relative;
+}
+
+.container {
+    @include container;
+}
+
+.content {
+    display: flex;
+    border-bottom: 1px solid;
+    border-image-source: linear-gradient(to left, #E95CE9, #0CBAF1);
+    border-image-slice: 1;
+
+    @include media (maxTable) {
+        flex-direction: column;
+    }
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 75px;
+    flex: 0 1 30%;
+
+    @include media (maxTable) {
+        @include flexContainer(center, center, row);
+    }
+}
+
+.logo {
+    flex: 1;
+
+    @include media (maxTable) {
+        flex: 0;
+        margin-right: 52px;
+    }
+}
+
+.socialBlock {
+    display: flex;
+}
+
+.block {
+    border-radius: 50%;
+    padding: 1.5px;
+    box-sizing: border-box;
+    background: linear-gradient(to left, #E95CE9, #0CBAF1);
+    transform: scale(1);
+    transition: transform .4s;
+    cursor: pointer;
+
+    &:not(:first-child) {
+        margin-left: 10px;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.socialLink {
+    @include flexContainer;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    background: rgb(24, 24, 27);
+}
+
+.nav {
+    margin-bottom: 33px;
+    flex: 1;
+}
+
+.navContent {
+    @include flexContainer(space-between, flex-start, '', wrap);
+    flex: 1;
+
+    @include media (minTable) {
+        justify-content: flex-start;
+    }
+}
+
+.links {
+    @include flexContainer(center, flex-start, column);
+}
+
+.column {
+    @include flexContainer(flex-start, center);
+
+    h4 {
+        @include typography(16, 600);
+    }
+
+    @include media (minTable) {
+        &:last-child {
+            flex: 1 1 100%;
+            margin-top: 40px;
+        }
+
+        &:first-child {
+            flex: 0 1 40%;
+        }
+
+        h4 {
+            @include typography(24);
+        }
+    }
+}
+
+.item {
+    a {
+        @include typography;
+        color: rgb(170, 169, 169);
+        opacity: .8;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &:not(:first-child) {
+            margin-top: 15px;
+        }    
+    }
+
+    @include media (minTable) {
+        a {
+            @include typography(24);
+            color: rgb(170, 169, 169);
+        }
+
+        &:not(:first-child) {
+            margin-top: 25px;
+        }
+    }
+}
+
+.contactBlock {
+    @include flexContainer(flex-start, flex-start, column);
+}
+
+.contact {
+    @include flexContainer;
+
+    &:not(:first-child) {
+        margin-top: 15px;
+    }
+
+    @include media (minTable) {
+        &:not(:first-child) {
+            margin-top: 25px;
+        }
+    }
+}
+
+.info {
+    @include typography;
+    color: rgb(170, 169, 169);
+    opacity: .8;
+    cursor: pointer;
+
+    &:not(:first-child) {
+        margin-left: 15px;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+
+    @include media (minTable) {
+        @include typography(24);
+        color: rgb(170, 169, 169);
+    }
+}
+
+.copyright {
+    @include flexContainer;
+    @include typography;
+    height: 100px;
+    color: rgb(170, 169, 169);
+    opacity: .8;
+
+    @include media (minTable) {
+        @include typography(24);
+        color: rgb(170, 169, 169);
+    }
+}
