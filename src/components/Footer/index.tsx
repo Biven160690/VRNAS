@@ -18,7 +18,11 @@ export const Footer = () => {
     const { data, loading, error } =
         useQuery<ContactInfoFooter>(getContactInfo);
 
-    if (loading || error) {
+    if (loading) {
+        return null;
+    }
+
+    if (error) {
         return null;
     }
 

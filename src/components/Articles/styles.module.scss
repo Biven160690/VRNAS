@@ -10,6 +10,10 @@
     @include mixins.flexContainer(space-between, flex-end);
     margin: 0 auto;
     margin-bottom: 72px;
+
+    @media screen and (max-width: 750px) {
+        margin-bottom: 30px;
+    }
 }
 
 .titleBlock {
@@ -27,7 +31,7 @@
     }
 
     @media screen and (max-width: 750px) {
-        @include mixins.typography(12, 500);
+        @include mixins.typography(10, 500);
     }
 }
 
@@ -58,8 +62,16 @@
     &:hover {
         opacity: 1;
     }
+
+    @media screen and (max-width: 550px) {
+        display: none;
+    }
 }
 
 .articlesContainer {
-    @include mixins.flexContainer;
+    @include mixins.flexContainer(space-between, flex-start);
+
+    @media screen and (max-width: 1226px) {
+        @include mixins.flexContainer(center, center, column);
+    }
 }

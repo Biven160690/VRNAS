@@ -7,15 +7,9 @@ import { ArticleCard } from '../../../graphql/__generated__/resolvers-types';
 import Image from 'next/image';
 import cx from 'classnames';
 
-export type Props = { popular: ArticleCard[] };
+export type Props = { articles: ArticleCard[] };
 
-export type PaginationProps = {
-    index: number;
-    onChange: (index: number) => void;
-    isActive: boolean;
-};
-
-export const PopularArticle = ({ popular }: Props) => {
+export const PopularArticle = ({ articles }: Props) => {
     const [currentIndexSlide, setCurrentIndexSlide] = React.useState<number>(0);
 
     const settingsSlider = {
@@ -39,14 +33,15 @@ export const PopularArticle = ({ popular }: Props) => {
     };
 
     return (
-        <div className={styles.popularContainer}>
-            <div className={styles.carouselContainer}>
+        <div className={styles.base}>
+            <div className={styles.container}>
                 <h3 className={styles.containerTitle}>Popular Article</h3>
+                <div className={styles.illumination} />
                 <Slider {...settingsSlider}>
-                    {popular.map(({ img, title, description }, index) => {
+                    {articles.map(({ img, title, description }, index) => {
                         return (
                             <div key={index}>
-                                <div className={styles.cardContainer}>
+                                <div className={styles.bg}>
                                     <Image
                                         src={`/articles/popular/${img}.png`}
                                         alt={`${img}`}
@@ -56,12 +51,10 @@ export const PopularArticle = ({ popular }: Props) => {
                                         <h3 className={styles.cardTitle}>
                                             {title}
                                         </h3>
-
                                         <p className={styles.cardDescription}>
                                             {description}
                                         </p>
                                     </div>
-
                                     <button className={styles.cardButton}>
                                         <Image
                                             src={`/common/arrow.png`}

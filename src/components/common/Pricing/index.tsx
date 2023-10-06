@@ -3,7 +3,7 @@ import { Pricing as PricingProps } from '../../../graphql/__generated__/resolver
 import styles from './styles.module.scss';
 import Image from 'next/image';
 
-const currenciesType = {
+const currenciesType: { [key: string]: string } = {
     usd: '$',
 };
 

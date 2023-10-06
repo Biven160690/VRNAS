@@ -1,38 +1,67 @@
 @use '../../../styles/mixin/mixins' as mixins;
+@use '../../../styles/placeholder/placeholders' as *;
+@use '../../../styles/variables/variables' as  var;
 
-.popularContainer {
-    flex: 1 1 50%;
+.base {
+    position: relative;
+    z-index: 2;
+    right: 10px;
+    top: 15px;
+
+    @media screen and (max-width: 1226px) {
+        width: 100%;
+        right: 0;
+    }
 }
 
-.carouselContainer {
+.container {
     max-width: 636px;
-    height: 425px;
+
+    @media screen and (max-width: 1226px) {
+        margin: 0 auto;
+        max-width: 800px;
+    }
 }
 
 .customPaging {
     text-align: center;
-}
 
-.customPaging li {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    li {
+        @include mixins.flexContainer;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        display: inline-flex;
+    }
 }
 
 .block {
     @include mixins.flexContainer;
-    max-width: 100%;
+    width: 100%;
     height: 100%;
+}
+
+.illumination {
+    @extend %illumination;
+    position: absolute;
+    z-index: -1;
+    top: -20px;
+    left: 0px;
+    width: 100%;
+    max-width: 354px;
+    height: 458px;
+
+    @media screen and (max-width: 750px) {
+        top: 150px;
+        left: 30px;
+    }
 }
 
 .dote {
     width: 9px;
     height: 3px;
     border-radius: 32px;
-    background: rgba(255, 255, 255, 0.31);
+    background: var.$bg-light-grey;
     position: relative;
     transition: all .2s;
 
@@ -48,10 +77,10 @@
     margin-bottom: 32px;
 }
 
-.cardContainer {
+.bg {
     @include mixins.flexContainer(space-around, flex-end);
     position: relative;
-    max-width: 636px;
+    max-width: 100%;
     height: 425px;
     box-sizing: border-box;
     padding: 0 24px 24px 24px;
@@ -77,13 +106,21 @@
     text-align: center;
     border-radius: 16px;
     padding: 2px 10px;
-    background: rgba(255, 255, 255, 0.30);
+    background: var.$bg-light-grey;
     margin-bottom: 5px;
+
+    @media screen and (max-width: 650px) {
+        @include mixins.typography(12, 500);
+    }
 }
 
 .cardDescription {
     @include mixins.typography(32, 600);
     letter-spacing: -0.16px;
+
+    @media screen and (max-width: 650px) {
+        @include mixins.typography(28, 500);
+    }
 }
 
 .cardButton {

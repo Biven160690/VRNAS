@@ -1,0 +1,113 @@
+@use '../../../styles/mixin/mixins' as mixins;
+@use '../../../styles/variables/variables' as  var;
+
+.base {
+  @include mixins.flexContainer(center, flex-start);
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, .17);
+  background: #252532;
+  width: 600px;
+  height: 505px;
+  padding: 32px 0;
+
+  @media screen and (max-width: 1226px) {
+    position: relative;
+    top: 20px;
+    width: calc(100% - 55px);
+    padding: 32px;
+  }
+}
+
+.container {
+  text-align: start;
+  width: 550px;
+
+  @media screen and (max-width: 1226px) {
+    width: 100%;
+  }
+}
+
+.header {
+  @include mixins.typography(36, 600);
+  letter-spacing: -0.005em;
+  margin-bottom: 32px;
+}
+
+.card {
+  @include mixins.flexContainer(center, flex-start);
+  width: 513px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 32px;
+
+  &:not(:first-child) {
+    margin-top: 32px;
+  }
+
+  @media screen and (max-width: 1226px) {
+    justify-content: flex-start;
+    width: calc(100% - 55px);
+  }
+}
+
+.content {
+  @include mixins.flexContainer(space-between, center);
+  margin-left: 21px;
+
+  @media screen and (max-width: 1226px) {
+    width: 100%;
+  }
+}
+
+.description {
+  text-align: start;
+  margin-right: 10px;
+  width: 297px;
+
+  @media screen and (max-width: 1226px) {
+    width: 100%;
+  }
+}
+
+.title {
+  @include mixins.typography(14);
+  display: inline-block;
+  border-radius: 16px;
+  padding: 2px 10px;
+  background: var.$bg-light-grey;
+  margin-bottom: 5px;
+
+  @media screen and (max-width: 550px) {
+    @include mixins.typography(12);
+  }
+}
+
+.text {
+  @include mixins.typography(18, 400);
+  letter-spacing: -0.16px;
+
+  @media screen and (max-width: 550px) {
+    @include mixins.typography(14);
+  }
+}
+
+.button {
+  @include mixins.flexContainer;
+  @include mixins.border-image;
+  position: relative;
+  background: transparent;
+  cursor: pointer;
+  padding: 16px;
+  transform: scale(1);
+  transition: transform .2s;
+
+  &:hover,
+  img {
+    transform: scale(1.1);
+  }
+
+  @media screen and (max-width: 720px) {
+    display: none;
+  }
+}

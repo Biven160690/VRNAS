@@ -1,7 +1,5 @@
 'use client';
 
-import Image from 'next/image';
-
 import { homePage } from '../graphql/queries/queries';
 import {
     Member,
@@ -25,7 +23,7 @@ import { Pricing } from '../components/common/Pricing';
 import { Partners } from '../components/common/Partners';
 import { Articles } from '@/components/Articles';
 import { Discover } from './home/discover';
-import { About } from './home/abount';
+import { About } from './home/about';
 
 export interface ClientsData {
     data: {

@@ -169,20 +169,52 @@ export const data = {
                 title: 'VR Education',
                 description:
                     'The Future of Education: How VR is Revolutionizing the Classroom',
-                img: '4',
+                img: 'education',
                 articleId: 4,
             },
             {
                 title: 'VR Architecture',
                 description:
                     'Making Events Memorable: The Power of VR for Corporate and Special Occasions',
-                img: '5',
+                img: 'architecture',
                 articleId: 5,
             },
             {
                 title: 'VR Event',
                 description: 'Exploring New Worlds: The Benefits of VR Travel',
-                img: '6',
+                img: 'event',
+                articleId: 6,
+            },
+            {
+                title: 'VR Entertainment',
+                description: 'Exploring New Worlds: The Benefits of VR Travel',
+                img: 'entertainment',
+                articleId: 6,
+            },
+            {
+                title: 'VR Education',
+                description:
+                    'The Future of Education: How VR is Revolutionizing the Classroom',
+                img: 'education',
+                articleId: 4,
+            },
+            {
+                title: 'VR Architecture',
+                description:
+                    'Making Events Memorable: The Power of VR for Corporate and Special Occasions',
+                img: 'architecture',
+                articleId: 5,
+            },
+            {
+                title: 'VR Event',
+                description: 'Exploring New Worlds: The Benefits of VR Travel',
+                img: 'event',
+                articleId: 6,
+            },
+            {
+                title: 'VR Entertainment',
+                description: 'Exploring New Worlds: The Benefits of VR Travel',
+                img: 'entertainment',
                 articleId: 6,
             },
         ],

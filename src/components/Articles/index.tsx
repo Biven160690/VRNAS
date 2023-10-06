@@ -4,12 +4,11 @@ import styles from './styles.module.scss';
 
 import { Articles as ArticlesProps } from '../../graphql/__generated__/resolvers-types';
 import { PopularArticle } from './PopularArticle';
+import { RecentArticle } from './RecentArticle';
 
 export type Props = { articles: ArticlesProps };
 
 export const Articles = ({ articles }: Props) => {
-    const { popular, recent } = articles;
-
     return (
         <div className={styles.base}>
             <div className={styles.description}>
@@ -22,7 +21,8 @@ export const Articles = ({ articles }: Props) => {
                 <button className={styles.button}>see all</button>
             </div>
             <div className={styles.articlesContainer}>
-                <PopularArticle popular={popular} />
+                <PopularArticle articles={articles.popular} />
+                <RecentArticle articles={articles.recent} />
             </div>
         </div>
     );
