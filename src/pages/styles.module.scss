@@ -455,3 +455,8 @@
     position: relative;
     margin-bottom: 150px;
 }
+
+.subscribe {
+    @include container;
+    margin-bottom: 67px;
+}

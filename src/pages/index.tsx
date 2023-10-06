@@ -10,7 +10,6 @@ import {
     Articles as ArticleProps,
 } from '../graphql/__generated__/resolvers-types';
 
-import { Advantages } from '../components/common/Advantages';
 import { Video } from '../components/common/Video';
 
 import styles from './styles.module.scss';
@@ -24,6 +23,7 @@ import { Partners } from '../components/common/Partners';
 import { Articles } from '@/components/Articles';
 import { Discover } from './home/discover';
 import { About } from './home/about';
+import { Subscribe } from '@/components/common/Subscribe';
 
 export interface ClientsData {
     data: {
@@ -118,6 +118,9 @@ function Index({ data }: ClientsData) {
             </section>
             <section className={styles.articles}>
                 <Articles articles={articles} />
+            </section>
+            <section className={styles.subscribe}>
+                <Subscribe />
             </section>
         </div>
     );
