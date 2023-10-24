@@ -1,0 +1,102 @@
+@use '../../../styles/mixin/mixins' as mixin;
+@use '../../../styles/placeholder/placeholders' as *;
+
+.base {
+    @include mixin.container;
+    @include mixin.flexContainer(space-between, start);
+    margin-bottom: 187px;
+
+    @media screen and (max-width: 1100px) {
+        align-items: center;
+        flex-direction: column-reverse;
+        margin: 50px 0;
+    }
+}
+
+.bg {
+    width: 100%;
+    max-width: 608px;
+    height: 622px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+
+    @media screen and (max-width: 1200px) {
+        margin-bottom: 55px;
+        align-items: center;
+    }
+}
+
+.img {
+    width: 100%;
+    max-width: 540px;
+    height: 622px;
+    background-image: url('../../../../public/bg/choose-hero.png'), url('../../../../public/bg/about-bg.png');
+    background-position: right bottom, 50px bottom;
+    background-repeat: no-repeat;
+    background-size: contain, 400px 458px;
+}
+
+.illumination {
+    @extend %illumination;
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    right: 140px;
+    width: 100%;
+    max-width: 304px;
+    height: 508px;
+
+    @media screen and (max-width: 450px) {
+        top: 150px;
+        left: 30px;
+    }
+}
+
+.video {
+    position: absolute;
+    bottom: -23px;
+    right: 60px;
+}
+
+.description {
+    margin-top: 80px;
+    max-width: 506px;
+    position: relative;
+
+    @media screen and (max-width: 1100px) {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+.title {
+    @include mixin.typography(16, 500);
+    @extend %gradient-text;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixin.typography(14, 500);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixin.typography(16, 500);
+    }
+}
+
+.subtitle {
+    @include mixin.typography(48, 600, 58);
+    letter-spacing: -0.24px;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixin.typography(40, 600, 58);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixin.typography(48, 600, 58);
+    }
+}

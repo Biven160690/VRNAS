@@ -2,8 +2,9 @@ import { Member } from '../../../graphql/__generated__/resolvers-types';
 import Image from 'next/image';
 import { Video } from '@/components/common/Video';
 import { Advantages } from '@/components/common/Advantages';
+import { animated, useSpring } from '@react-spring/web';
 
-import styles from './styles.module.scss'
+import styles from './styles.module.scss';
 
 export type Props = {
     clients: Member[];
@@ -13,6 +14,12 @@ const LINK_VIDEO =
     'https://res.cloudinary.com/codelife/video/upload/v1637805738/intro_l5ul1k.mp4';
 
 export const Discover = ({ clients }: Props) => {
+    const { number } = useSpring({
+        from: { number: 0 },
+        to: { number: 32 },
+        config: { duration: 1500 },
+    });
+
     return (
         <section className={styles.discover}>
             <div className={styles.hero}>
@@ -27,10 +34,14 @@ export const Discover = ({ clients }: Props) => {
                         Experience Unforgettable Events in VR. Bring your events
                         to life like never before with our VR services
                     </div>
+                    <div className={styles.mask}></div>
                 </div>
-                <button className={styles.button}>
-                    discover more
-                </button>
+                <div className={styles.buttonBlock}>
+                    <button className={styles.button}>discover more</button>
+                    <div className={styles.blinkContainer}>
+                        <div className={styles.blink} />
+                    </div>
+                </div>
                 <div className={styles.clients}>
                     <div className={styles.block}>
                         {clients.map(({ img }, index) => {
@@ -45,7 +56,9 @@ export const Discover = ({ clients }: Props) => {
                             );
                         })}
                         <div className={styles.amountBlock}>
-                            <div className={styles.amount}>32</div>
+                            <animated.div className={styles.amount}>
+                                {number.to((val) => Math.floor(val))}
+                            </animated.div>
                             <div className={styles.measurement}>K+</div>
                             <div className={styles.underline} />
                         </div>

@@ -46,13 +46,12 @@ export const DropDownBlock = ({ links, menuLink }: Props) => {
 
     return (
         <div className={cx(styles.base, isShow && styles.base__show)} ref={ref}>
-            <div className={styles.block}>
-                <a href="#" className={styles.link}>
+            <div className={styles.block} onClick={() => setIsShow((prev) => !prev)}>
+                <a className={styles.link}>
                     {menuLink}
                 </a>
                 <button
                     className={styles.button}
-                    onClick={() => setIsShow((prev) => !prev)}
                 >
                     <Image
                         src="/common/vector.png"

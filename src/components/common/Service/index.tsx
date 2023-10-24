@@ -34,23 +34,23 @@ const getTopIndent = (
 };
 
 export const Service = ({ services }: Props) => {
-    const [arrayIndents, setArrayIndents] = React.useState(() =>
-        getTopIndent(services.length)
-    );
+    const [arrayIndents, setArrayIndents] = React.useState<number[]>([]);
+    const firstStep = React.useRef<boolean>(true);
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
         const handleResize = () => {
-            const isIndentZero = arrayIndents.every((indent) => indent === 0);
             const { clientWidth } = document.documentElement;
 
-            if (clientWidth <= 950 && !isIndentZero) {
-                setArrayIndents(getTopIndent(services.length, true));
-            }
-
-            if (clientWidth > 950 && isIndentZero) {
-                setArrayIndents(getTopIndent(services.length));
-            }
+            setArrayIndents(
+                getTopIndent(services.length, clientWidth <= 950 ? true : false)
+            );
         };
+
+        if (firstStep.current) {
+            handleResize();
+
+            firstStep.current = false;
+        }
 
         window.addEventListener('resize', handleResize);
 
@@ -59,12 +59,12 @@ export const Service = ({ services }: Props) => {
 
     return (
         <section className={styles.service}>
-            <div className={styles.service_info}>
-                <div className={styles.service_headerBlock}>
-                    <div className={styles.service_title}>OUR SERVICE</div>
-                    <div className={styles.service_subtitle}>Our Service</div>
+            <div className={styles.info}>
+                <div className={styles.headerBlock}>
+                    <div className={styles.title}>OUR SERVICE</div>
+                    <div className={styles.subtitle}>Our Service</div>
                 </div>
-                <div className={styles.service_mainText}>
+                <div className={styles.mainText}>
                     We use the latest VR hardware and software to create
                     high-quality VR experiences that are accessible and
                     affordable. Our goal is to provide exceptional customer
@@ -72,12 +72,12 @@ export const Service = ({ services }: Props) => {
                     answer any questions and address any concerns you may have.
                 </div>
             </div>
-            <div className={styles.service_illumination} />
-            <div className={styles.service_content}>
+            <div className={styles.illumination} />
+            <div className={styles.content}>
                 {services.map(({ img, description, title }, index) => {
                     return (
                         <div
-                            className={styles.service_card}
+                            className={styles.card}
                             style={{
                                 marginTop: `${arrayIndents[index]}px`,
                             }}
@@ -88,13 +88,13 @@ export const Service = ({ services }: Props) => {
                                 width={48}
                                 height={48}
                                 alt={`${img}`}
-                                className={styles.service_img}
+                                className={styles.img}
                             />
 
-                            <h3 className={styles.service_header}>{title}</h3>
-                            <p className={styles.service_text}>{description}</p>
-                            <div className={styles.service_hoverBlock}>
-                                <button className={styles.service_button}>
+                            <h3 className={styles.header}>{title}</h3>
+                            <p className={styles.text}>{description}</p>
+                            <div className={styles.hoverBlock}>
+                                <button className={styles.button}>
                                     LEARN MORE
                                 </button>
                             </div>
@@ -105,3 +105,26 @@ export const Service = ({ services }: Props) => {
         </section>
     );
 };
+
+// const [arrayIndents, setArrayIndents] = React.useState(() =>
+// getTopIndent(services.length)
+// );
+
+// React.useLayoutEffect(() => {
+// const handleResize = () => {
+//     const isIndentZero = arrayIndents.every((indent) => indent === 0);
+//     const { clientWidth } = document.documentElement;
+
+//     if (clientWidth <= 950 && !isIndentZero) {
+//         setArrayIndents(getTopIndent(services.length, true));
+//     }
+
+//     if (clientWidth > 950 && isIndentZero) {
+//         setArrayIndents(getTopIndent(services.length));
+//     }
+// };
+
+// window.addEventListener('resize', handleResize);
+
+// return () => window.removeEventListener('resize', handleResize);
+// }, [services, arrayIndents]);

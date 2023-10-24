@@ -63,6 +63,10 @@
     position: relative;
     z-index: 1;
 
+    &__startAnimmation {
+        animation: scale-up-center 1s cubic-bezier(.39, .575, .565, 1.000) both;
+    }
+
     video {
         max-width: 100%;
         height: auto;
@@ -78,5 +82,15 @@
 
     &_hide {
         display: none;
+    }
+}
+
+@keyframes scale-up-center {
+    0% {
+        transform: scale(.5)
+    }
+
+    100% {
+        transform: scale(1)
     }
 }

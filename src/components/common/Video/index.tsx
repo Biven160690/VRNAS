@@ -13,6 +13,7 @@ export type Props = {
   height: number;
   children?: React.ReactNode;
   isNeedControls?: boolean;
+  isNeedScale?: boolean;
   classNames?: {
     base?: string;
     play?: string;
@@ -26,12 +27,14 @@ export type Props = {
 export const Video = ({
   src,
   isNeedControls = false,
+  isNeedScale = false,
   width,
   height,
   children,
   classNames,
 }: Props) => {
   const [controller, setController] = React.useState<VideoController>("play");
+  const [isScroll, setScroll] = React.useState<boolean>(false);
 
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const handlerClickPlay = () => {
@@ -52,6 +55,20 @@ export const Video = ({
     }
   };
 
+  React.useLayoutEffect(() => {
+    const video = videoRef.current;
+
+    if (!video) {
+      return;
+    }
+
+    if (isNeedControls) {
+      video.addEventListener("loadeddata", () => {
+        video.setAttribute("controls", "true");
+      });
+    }
+  });
+
   React.useEffect(() => {
     const video = videoRef.current;
     if (!video) {
@@ -69,26 +86,26 @@ export const Video = ({
 
   return (
     <div className={cx(styles.base, classNames?.base)}>
-      <div className={cx(styles.video, classNames?.video)}>
-        <video
-          src={src}
-          width={width}
-          height={height}
-          ref={videoRef}
-          controls={isNeedControls}
-        />
+      <div
+        className={cx(
+          styles.video,
+          isNeedScale && isScroll && styles.video__startAnimation,
+          classNames?.video
+        )}
+      >
+        <video src={src} width={width} height={height} ref={videoRef} />
+        {children && (
+          <div
+            className={cx(
+              styles.children,
+              controller !== "play" && styles.children_hide,
+              classNames?.children,
+            )}
+          >
+            {children}
+          </div>
+        )}
       </div>
-      {children && (
-        <div
-          className={cx(
-            styles.children,
-            classNames?.children,
-            controller !== "play" && styles.children_hide
-          )}
-        >
-          {children}
-        </div>
-      )}
       <button
         className={cx(
           styles.play,

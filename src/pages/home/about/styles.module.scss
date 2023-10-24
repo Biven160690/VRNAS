@@ -1,6 +1,7 @@
 @use '../../../styles/mixin/mixins' as mixins;
 @use '../../../styles/variables/variables' as var;
 @use '../../../styles/placeholder/placeholders' as *;
+@use "sass:map";
 
 .about {
     @include mixins.container;
@@ -30,7 +31,7 @@
     }
 }
 
-.img {
+.hero {
     width: 100%;
     max-width: 540px;
     height: 622px;
@@ -123,6 +124,16 @@
 
 .services {
     margin-top: 24px;
+
+    @for $i from 1 through 3 {
+        .service:nth-child(#{$i}) {
+            img {
+                opacity: 0;
+                animation: bounce-in-top 1s both;
+                animation-delay: map.get(var.$checkbox-delay, $i);
+            }
+        }
+    }
 }
 
 .serviceText {
@@ -145,4 +156,66 @@
     @include mixins.typography(14, 700, 14);
     @extend %button;
     margin-top: 32px;
+}
+
+
+@keyframes bounce-in-top {
+    0% {
+        -webkit-transform: translateY(-500px);
+        transform: translateY(-500px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    38% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+        opacity: 1;
+    }
+
+    55% {
+        -webkit-transform: translateY(-65px);
+        transform: translateY(-65px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    72% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    81% {
+        -webkit-transform: translateY(-28px);
+        transform: translateY(-28px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    90% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    95% {
+        -webkit-transform: translateY(-8px);
+        transform: translateY(-8px);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
 }

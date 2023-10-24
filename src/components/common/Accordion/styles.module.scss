@@ -1,7 +1,11 @@
 .base {
-    width: 100%;
+    position: absolute;
+
+    @media screen and (max-width: 1100px) {
+        position: relative;
+    }
 }
 
 .block {
-    position: relative;
+    width: 100%;
 }

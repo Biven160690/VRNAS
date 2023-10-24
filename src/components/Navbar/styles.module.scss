@@ -13,32 +13,9 @@
     @include flexContainer;
 }
 
-.column {
-    &:nth-child(odd) {
-        flex: 1;
-    }
-
-    @include media(tablet) {
-        @for $i from 1 through 3 {
-            &:nth-child(4n - #{$i}) {
-                @if $i ==3 {
-                    position: relative;
-                    z-index: 10;
-                }
-
-                @if $i ==2 {
-                    order: 3;
-                    margin-left: 15px;
-                }
-
-                @if $i ==1 {
-                    order: 2;
-                    position: relative;
-                    z-index: 10;
-                }
-            }
-        }
-    }
+.column,
+.column_nav {
+    flex: 1;
 }
 
 .iconBlock {
@@ -58,6 +35,7 @@
         text-align: right;
         opacity: .7;
         transition: opacity .3s;
+        margin-left: 9px;
     }
 }
 
@@ -100,26 +78,31 @@
     }
 }
 
-.nav {
-    display: flex;
-    transition: all .6s ease-in-out;
+.column_nav {
+    position: relative;
 
     @include media(tablet) {
         position: fixed;
         z-index: 1;
         top: 0;
         left: 0;
-        align-items: flex-start;
-        opacity: 0;
-        width: 0;
+        width: 0%;
         height: 100%;
+        background-color: rgba(80, 78, 78, .9);
+        transition: width .4s ease-in-out;
 
         .base_show & {
-            animation: show-navbar .6s backwards ease-in-out;
-            background-color: rgba(80, 78, 78, .9);
             width: 100%;
-            opacity: 1;
         }
+    }
+}
+
+.nav {
+    @include flexContainer;
+
+    @include media(tablet) {
+        position: absolute;
+        transform: translateX(-100%)
     }
 }
 
@@ -129,22 +112,20 @@
 
     @include media(tablet) {
         @include flexContainer(center, flex-start, column);
-        opacity: 0;
         top: 60px;
         left: 0;
         padding-left: 15px;
-    }
+        transition: left .4s .1s ease-in-out;
 
-    .base_show & {
-        transition: all .4s .3s ease-in-out;
-        opacity: 1;
+        .base_show & {
+            left: 100%
+        }
     }
 }
 
 .item {
-    position: relative;
     margin-right: 65px;
-    max-height: 100%;
+    white-space: nowrap;
 
     a {
         font-size: 16px;
@@ -153,6 +134,13 @@
         color: rgb(255, 255, 255);
     }
 
+    @include media(tablet) {
+        a {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 45px;
+        }
+    }
 }
 
 .link {
@@ -189,17 +177,5 @@
         border: none;
         color: rgb(255, 255, 255);
         cursor: pointer;
-    }
-}
-
-@keyframes show-navbar {
-    0% {
-        width: 0;
-        opacity: 0;
-    }
-
-    100% {
-        width: 100%;
-        opacity: 1;
     }
 }

@@ -1,11 +1,12 @@
-@use '../../../styles/mixin/mixins' as *;
+@use '../../../styles/mixin/mixins' as mixins;
 
 .base {
-    @include flexContainer;
+    @include mixins.flexContainer;
     transition: all .4s linear;
+    position: relative;
 
-    @include media(tablet) {
-        @include flexContainer(center, flex-start, column);
+    @include mixins.media(tablet) {
+        @include mixins.flexContainer(center, flex-start, column);
     }
 }
 
@@ -33,11 +34,10 @@
 }
 
 .dropDown {
-    width: 160px;
     max-height: 0;
     position: absolute;
     top: 40px;
-    left: 0px;
+    left: 0;
     z-index: 10;
     background-color: #717171;
     visibility: hidden;
@@ -50,7 +50,7 @@
         max-height: 800px;
     }
 
-    @include media(tablet) {
+    @include mixins.media(tablet) {
         width: 100%;
         position: relative;
         top: 0;
@@ -59,13 +59,7 @@
 }
 
 .links {
-    display: flex;
-    flex-direction: column;
     padding: 10px;
-
-    .item {
-        margin-top: 5px;
-    }
 
     &:first-child {
         margin-top: 0;
@@ -73,20 +67,19 @@
 }
 
 .link {
-    display: block;
     opacity: .7;
     transition: opacity .3s;
 
     &:hover {
         opacity: 1;
     }
+
+    a {
+        white-space: nowrap;
+    }
 }
 
 .block {
-    @include flexContainer;
+    @include mixins.flexContainer;
     cursor: pointer;
-
-    @include media(tablet) {
-        align-items: start;
-    }
 }

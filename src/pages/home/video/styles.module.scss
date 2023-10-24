@@ -1,0 +1,133 @@
+@use '../../../styles/mixin/mixins' as mixin;
+@use '../../../styles/placeholder/placeholders' as *;
+
+.base {
+    @include mixin.container;
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.container {
+    @include mixin.flexContainer(center, center, column);
+}
+
+.titleBlock {
+    position: relative;
+    max-width: 709px;
+    text-align: center;
+    margin-bottom: 48px;
+
+    @media screen and (max-width: 1200px) {
+        max-width: 509px;
+    }
+
+    @media screen and (max-width: 600px) {
+        max-width: 309px;
+    }
+}
+
+.title {
+    @include mixin.typography(16, 500);
+    @extend %gradient-text;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixin.typography(14, 500);
+        margin-bottom: 10px;
+    }
+}
+
+.description {
+    @include mixin.typography(48, 600, 58);
+    letter-spacing: -0.24px;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixin.typography(40, 600, 58);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixin.typography(40, 600, 58);
+    }
+
+    @media screen and (max-width: 600px) {
+        @include mixin.typography(24, 400, 34);
+    }
+}
+
+.illumination {
+    @extend %illumination;
+    position: absolute;
+    z-index: 1;
+    top: -50px;
+    left: -150px;
+    width: 100%;
+    max-width: 199px;
+    height: 450px;
+}
+
+.headerBlock {
+    max-width: 299px;
+    text-align: start;
+    background-color: transparent;
+}
+
+.header {
+    @include mixin.typography(14, 500, 14);
+
+    @media screen and (max-width: 970px) {
+        @include mixin.typography(12, 500);
+    }
+
+    @media screen and (max-width: 600px) {
+        @include mixin.typography(10, 500);
+    }
+}
+
+.text {
+    @include mixin.typography(36, 500, 44);
+
+    @media screen and (max-width: 970px) {
+        @include mixin.typography(28, 400, 24);
+    }
+
+    @media screen and (max-width: 600px) {
+        @include mixin.typography(18, 400, 14);
+    }
+}
+
+.button {
+    @include mixin.typography(14, 700, 14);
+    @extend %button;
+    margin-top: 32px;
+}
+
+.clip {
+    border: 2px solid transparent;
+    border-radius: 10px 10px 0 0;
+
+    & > button {
+        width: 90px;
+        height: 90px;
+    }
+
+    @media screen and (max-width: 740px) {
+        & > button {
+            width: 60px;
+            height: 60px;
+        }
+    }
+}
+
+.play {
+    background: url('../../../../public/common/controllers/100x100/play.png') no-repeat center / contain;
+}
+
+.pause {
+    background: url('../../../../public/common/controllers/100x100/pause.png') no-repeat center / contain;
+}
+
+.replay {
+    background: url('../../../../public/common/controllers/100x100/replay.png') no-repeat center / contain;
+}

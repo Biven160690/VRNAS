@@ -48,6 +48,7 @@
     left: 110px;
     width: 284px;
     height: 508px;
+    animation: heartbeat 1.5s .3s ease-in-out 2 both;
 
     @media screen and (max-width: 950px) {
         top: 80px;
@@ -71,6 +72,7 @@
 .description {
     max-width: 540px;
     margin-bottom: 32px;
+    position: relative;
 
     @media screen and (max-width: 950px) {
         max-width: 460px;
@@ -89,10 +91,12 @@
     }
 }
 
+
 .text {
     @include mixins.typography(16, 300);
     max-width: 486px;
     color: var.$text-color;
+    position: relative;
 
     @media screen and (max-width: 1200px) {
         @include mixins.typography(15, 300);
@@ -101,12 +105,75 @@
     }
 }
 
-.button {
-    @include mixins.typography(14, 700, 14);
-    @extend %button;
-    margin-bottom: 81px;
+.mask {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    z-index: 15;
+    mask-image: radial-gradient(rgb(250, 8, 8));
+    animation: colorChange 1.5s ease-in-out infinite both;
+    mask-position-x: 0px;
+    mask-position-y: 0px;
 }
 
+
+@keyframes colorChange {
+    0% {
+        mask-position-x: 0px;
+        mask-position-y: 0px;
+    }
+
+    100% {
+        mask-position-x: 150px;
+        mask-position-y: 150px;
+    }
+}
+
+.buttonBlock {
+    display: inline-block;
+    position: relative;
+    margin-bottom: 81px;
+    overflow: hidden;
+}
+
+.button {
+
+    @include mixins.typography(14, 700, 14);
+    @extend %button;
+}
+
+.bottonAinimation {
+    position: absolute;
+    white-space: nowrap;
+    padding: 50px;
+}
+
+.blinkContainer {
+    position: absolute;
+    z-index: 2;
+    top: -5px;
+    width: 100%;
+    height: 100%;
+    animation: identifier 1.5s ease-in-out 2 both;
+}
+
+.blink {
+    width: 100px;
+    height: 20px;
+    transform: rotate(130deg);
+    transform-origin: center bottom;
+    background-color: rgba(255, 255, 255, .7);
+}
+
+@keyframes identifier {
+    from {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+}
 
 .clients {
     @include mixins.container;
@@ -114,8 +181,8 @@
 
     @media screen and (max-width: 1200px) {
         @include mixins.flexContainer(flex-start, flex-start, column);
-    
-        & > div:last-child {
+
+        &>div:last-child {
             margin-top: 150px;
             margin-left: 0;
         }
@@ -125,7 +192,7 @@
 .block {
     @include mixins.flexContainer(flex-start, center);
 
-    & > img:not(:first-child) {
+    &>img:not(:first-child) {
         margin-left: -10px;
     }
 }
@@ -135,7 +202,7 @@
     position: relative;
     margin-left: 18px;
 
-    & + p {
+    &+p {
         @include mixins.typography(16, 300);
         margin-left: 5px;
         color: var.$text-color;
@@ -164,3 +231,41 @@
 }
 
 
+@keyframes heartbeat {
+    from {
+        -webkit-transform: scale(1) rotate(-120deg);
+        transform: scale(1) rotate(-120deg);
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    10% {
+        -webkit-transform: scale(0.91) rotate(-120deg);
+        transform: scale(0.91) rotate(-120deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    17% {
+        -webkit-transform: scale(0.98) rotate(-120deg);
+        transform: scale(0.98) rotate(-120deg);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+
+    33% {
+        -webkit-transform: scale(0.87) rotate(-120deg);
+        transform: scale(0.87) rotate(-120deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+    }
+
+    45% {
+        -webkit-transform: scale(1) rotate(-120deg);
+        transform: scale(1) rotate(-120deg);
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+    }
+}

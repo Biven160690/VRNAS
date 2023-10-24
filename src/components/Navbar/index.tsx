@@ -26,7 +26,7 @@ export const Navbar = () => {
                         alt="mainLogo"
                     />
                 </div>
-                <div className={styles.column}>
+                <div className={styles.column_nav}>
                     <nav className={styles.nav}>
                         <ul className={styles.links}>
                             <li className={styles.item}>
@@ -58,21 +58,21 @@ export const Navbar = () => {
                             </li>
                         </ul>
                     </nav>
-                    <div
-                        className={styles.iconBlock}
-                        onClick={() => setIsActive((prev) => !prev)}
-                    >
-                        <div className={styles.icon}>
-                            <div className={styles.bar1} />
-                            <div className={styles.bar2} />
-                            <div className={styles.bar3} />
-                        </div>
-                    </div>
                 </div>
                 <div className={styles.column}>
                     <div className={styles.buttonBlock}>
                         <div className={styles.button}>
                             <button>Contact us</button>
+                        </div>
+                        <div
+                            className={styles.iconBlock}
+                            onClick={() => setIsActive((prev) => !prev)}
+                        >
+                            <div className={styles.icon}>
+                                <div className={styles.bar1} />
+                                <div className={styles.bar2} />
+                                <div className={styles.bar3} />
+                            </div>
                         </div>
                     </div>
                 </div>

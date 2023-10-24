@@ -10,7 +10,7 @@ export const About = () => {
     return (
         <section className={styles.about}>
             <div className={styles.bg}>
-                <div className={styles.img} />
+                <div className={styles.hero} />
                 <div className={styles.illumination} />
                 <div className={styles.video}>
                     <Video src={LINK_VIDEO} width={198} height={128} />
