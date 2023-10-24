@@ -67,7 +67,7 @@ export const Video = ({
         video.setAttribute("controls", "true");
       });
     }
-  });
+  }, [isNeedControls]);
 
   React.useEffect(() => {
     const video = videoRef.current;
