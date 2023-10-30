@@ -1,14 +1,22 @@
+import React from 'react';
 import Image from 'next/image';
+import cx from 'classnames';
 
 import styles from './styles.module.scss';
 import { Video } from '@/components/common/Video';
+import { useWindowScroll } from '@/utils/hooks/useWindowScroll';
 
 const LINK_VIDEO =
     'https://res.cloudinary.com/codelife/video/upload/v1637805738/intro_l5ul1k.mp4';
 
 export const About = () => {
+    const { isStartAnimation, ref } = useWindowScroll(550);
+
     return (
-        <section className={styles.about}>
+        <section
+            ref={ref}
+            className={cx(styles.about, isStartAnimation && styles.about_startAnimation)}
+        >
             <div className={styles.bg}>
                 <div className={styles.hero} />
                 <div className={styles.illumination} />

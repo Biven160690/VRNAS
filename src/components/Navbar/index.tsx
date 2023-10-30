@@ -14,9 +14,39 @@ const links = {
 
 export const Navbar = () => {
     const [isActive, setIsActive] = React.useState<boolean>(false);
+    const [isHiddenNavBar, setStateIsHiddenNavBar] = React.useState<boolean>(false);
+
+    React.useEffect(() => {
+        let previousScrollTop = 80;
+
+        const handleChange = () => {
+            const currentScrollTop =
+                document.documentElement.scrollTop || document.body.scrollTop;
+
+            if (currentScrollTop > previousScrollTop) {
+                setStateIsHiddenNavBar(true);
+            } else if (currentScrollTop < previousScrollTop) {
+                setStateIsHiddenNavBar(false);
+            }
+
+            previousScrollTop = currentScrollTop;
+        };
+
+        window.addEventListener('scroll', handleChange);
+
+        return () => {
+            window.removeEventListener('scroll', handleChange);
+        };
+    }, []);
 
     return (
-        <header className={cx(styles.base, isActive && styles.base_show)}>
+        <header
+            className={cx(
+                styles.base,
+                isActive && styles.base_active,
+                isHiddenNavBar && styles.base_hidden
+            )}
+        >
             <div className={styles.container}>
                 <div className={styles.column}>
                     <Image

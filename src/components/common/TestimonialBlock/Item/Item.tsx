@@ -6,16 +6,20 @@ import { Testimonial } from '../../../../graphql/__generated__/resolvers-types';
 
 import styles from './styles.module.scss';
 
-export type Props = { testimonial: Testimonial };
+export type Props = { testimonial: Testimonial; isStartAnimation: boolean };
 
-export const Item = ({ testimonial }: Props) => {
+export const Item = ({ testimonial, isStartAnimation }: Props) => {
     const { img, comment, role, firstName, lastName } = testimonial;
 
     const [shotTooltip, setTooltip] = React.useState<boolean>(false);
 
     return (
         <div
-            className={cx(styles.base, shotTooltip && styles.base__shotTooltip)}
+            className={cx(
+                styles.base,
+                shotTooltip && styles.base__shotTooltip,
+                isStartAnimation && styles.base_startAnimation
+            )}
         >
             <div
                 className={styles.block}

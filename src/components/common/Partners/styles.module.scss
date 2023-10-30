@@ -79,6 +79,7 @@
     z-index: 20;
     background-color: rgba(37, 37, 50, .80);
     border-radius: 50%;
+    opacity: 0;
 
     img {
         width: calc(100% - 10px);
@@ -98,6 +99,24 @@
         -webkit-mask-composite: xor;
         mask-composite: exclude
     }
+
+    .base_startAnimation & {
+        @for $i from 1 through 7 {
+            &:nth-child(#{$i}) {
+                @if $i <= 3  {
+                    animation: slide-in-bck-center-left 0.5s #{$i * 0.3}s cubic-bezier(.25, .46, .45, .94) both;
+                }
+    
+                @if $i == 4  {
+                    animation: slide-in-bck-center-top 0.7s 1.3s cubic-bezier(.25, .46, .45, .94) both;
+                }
+    
+                @if $i > 4  {
+                    animation: slide-in-bck-center-rigth 0.8s #{$i * 0.2}s cubic-bezier(.25, .46, .45, .94) both;
+                }
+            }
+        }
+    }
 }
 
 .hero {
@@ -110,5 +129,41 @@
 
     @media screen and (max-width: 650px) {
         margin-left: 15px;
+    }
+}
+
+@keyframes slide-in-bck-center-left {
+    0% {
+        transform: translateX(-600px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-in-bck-center-top {
+    0% {
+        transform: translateY(-600px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes slide-in-bck-center-rigth {
+    0% {
+        transform: translateX(600px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1
     }
 }

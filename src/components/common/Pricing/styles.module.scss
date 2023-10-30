@@ -144,6 +144,10 @@
     padding: 20px 70px;
     background: #252532;
 
+    .base_startAnimation & {
+        animation: shake-horizontal .8s cubic-bezier(.455, .03, .515, .955) both;
+    }
+
     @media screen and (max-width: 1140px) {
         bottom: -80px;
         right: calc(50% - 160px);
@@ -172,4 +176,32 @@
 
 .periodGuarantee {
     @include mixins.typography(12, 400, 20, var.$light-grey);
+}
+
+@keyframes shake-horizontal {
+    0%,
+    100% {
+        transform: translateX(0)
+    }
+
+    10%,
+    30%,
+    50%,
+    70% {
+        transform: translateX(-10px)
+    }
+
+    20%,
+    40%,
+    60% {
+        transform: translateX(10px)
+    }
+
+    80% {
+        transform: translateX(8px)
+    }
+
+    90% {
+        transform: translateX(-8px)
+    }
 }

@@ -1,11 +1,20 @@
 @use '../../styles/mixin/mixins' as *;
 
+
 .base {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 50;
+    transform: scaleY(1);
+    transform-origin: 100% 0%;
+    transition: transform .3s;
+    
+    &_hidden {
+        transform: scaleY(0);
+        transform-origin: 100% 0%;
+    }
 }
 
 .container {
@@ -58,20 +67,20 @@
 }
 
 .bar1 {
-    .base_show & {
+    .base_active & {
         margin: 2px 0;
         transform: translate(0, 10px) rotate(-45deg);
     }
 }
 
 .bar2 {
-    .base_show & {
+    .base_active & {
         opacity: 0;
     }
 }
 
 .bar3 {
-    .base_show & {
+    .base_active & {
         width: 30px;
         margin: 4px 0;
         transform: translate(0, -8px) rotate(45deg);
@@ -91,7 +100,7 @@
         background-color: rgba(80, 78, 78, .9);
         transition: width .4s ease-in-out;
 
-        .base_show & {
+        .base_active & {
             width: 100%;
         }
     }
@@ -117,7 +126,7 @@
         padding-left: 15px;
         transition: left .4s .1s ease-in-out;
 
-        .base_show & {
+        .base_active & {
             left: 100%
         }
     }

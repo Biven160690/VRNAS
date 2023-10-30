@@ -2,6 +2,8 @@ import React from 'react';
 import { Pricing as PricingProps } from '../../../graphql/__generated__/resolvers-types';
 import styles from './styles.module.scss';
 import Image from 'next/image';
+import { useWindowScroll } from '@/utils/hooks/useWindowScroll';
+import cx from 'classnames'
 
 const currenciesType: { [key: string]: string } = {
     usd: '$',
@@ -25,8 +27,10 @@ export const Pricing = ({ pricing }: Props) => {
     const { description, priceContent } = pricing;
     const { total, currentType, periodGuarantee } = priceContent;
 
+    const { isStartAnimation, ref } = useWindowScroll(-50);
+
     return (
-        <div className={styles.base}>
+        <div ref={ref} className={cx(styles.base, isStartAnimation && styles.base_startAnimation)}>
             <div className={styles.titleBlock}>
                 <h3 className={styles.title}>our pricing</h3>
                 <h2 className={styles.subtitle}>
@@ -66,7 +70,6 @@ export const Pricing = ({ pricing }: Props) => {
                     })}
                 </div>
                 <div className={styles.hero} />
-                {/* <div className={styles.illumination} /> */}
                 <div className={styles.priceContent}>
                     <p className={styles.header}>Start from</p>
                     <div className={styles.priceBlock}>

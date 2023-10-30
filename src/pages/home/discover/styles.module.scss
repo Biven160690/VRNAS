@@ -105,30 +105,6 @@
     }
 }
 
-.mask {
-    width: 100px;
-    height: 100px;
-    position: absolute;
-    z-index: 15;
-    mask-image: radial-gradient(rgb(250, 8, 8));
-    animation: colorChange 1.5s ease-in-out infinite both;
-    mask-position-x: 0px;
-    mask-position-y: 0px;
-}
-
-
-@keyframes colorChange {
-    0% {
-        mask-position-x: 0px;
-        mask-position-y: 0px;
-    }
-
-    100% {
-        mask-position-x: 150px;
-        mask-position-y: 150px;
-    }
-}
-
 .buttonBlock {
     display: inline-block;
     position: relative;
@@ -137,7 +113,6 @@
 }
 
 .button {
-
     @include mixins.typography(14, 700, 14);
     @extend %button;
 }

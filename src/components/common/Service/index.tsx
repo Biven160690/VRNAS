@@ -2,9 +2,11 @@
 
 import React from 'react';
 import Image from 'next/image';
+import cx from 'classnames';
 
 import styles from './styles.module.scss';
 import { Service as ServiceData } from '../../../graphql/__generated__/resolvers-types';
+import { useWindowScroll } from '@/utils/hooks/useWindowScroll';
 
 export type Props = { services: ServiceData[] };
 
@@ -36,6 +38,7 @@ const getTopIndent = (
 export const Service = ({ services }: Props) => {
     const [arrayIndents, setArrayIndents] = React.useState<number[]>([]);
     const firstStep = React.useRef<boolean>(true);
+    const { isStartAnimation, ref } = useWindowScroll(450);
 
     React.useLayoutEffect(() => {
         const handleResize = () => {
@@ -58,7 +61,13 @@ export const Service = ({ services }: Props) => {
     }, [services, arrayIndents]);
 
     return (
-        <section className={styles.service}>
+        <section
+            ref={ref}
+            className={cx(
+                styles.service,
+                isStartAnimation && styles.service_startAnimation
+            )}
+        >
             <div className={styles.info}>
                 <div className={styles.headerBlock}>
                     <div className={styles.title}>OUR SERVICE</div>
@@ -105,26 +114,3 @@ export const Service = ({ services }: Props) => {
         </section>
     );
 };
-
-// const [arrayIndents, setArrayIndents] = React.useState(() =>
-// getTopIndent(services.length)
-// );
-
-// React.useLayoutEffect(() => {
-// const handleResize = () => {
-//     const isIndentZero = arrayIndents.every((indent) => indent === 0);
-//     const { clientWidth } = document.documentElement;
-
-//     if (clientWidth <= 950 && !isIndentZero) {
-//         setArrayIndents(getTopIndent(services.length, true));
-//     }
-
-//     if (clientWidth > 950 && isIndentZero) {
-//         setArrayIndents(getTopIndent(services.length));
-//     }
-// };
-
-// window.addEventListener('resize', handleResize);
-
-// return () => window.removeEventListener('resize', handleResize);
-// }, [services, arrayIndents]);

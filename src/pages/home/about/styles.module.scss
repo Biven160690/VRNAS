@@ -125,15 +125,19 @@
 .services {
     margin-top: 24px;
 
-    @for $i from 1 through 3 {
-        .service:nth-child(#{$i}) {
-            img {
-                opacity: 0;
-                animation: bounce-in-top 1s both;
-                animation-delay: map.get(var.$checkbox-delay, $i);
+    .about_startAnimation & {
+        @for $i from 1 through 3 {
+            .service:nth-child(#{$i}) {
+                img {
+                    opacity: 0;
+                    animation: bounce-in-top 1s both;
+                    animation-delay: map.get(var.$checkbox-delay, $i);
+                }
             }
         }
+
     }
+
 }
 
 .serviceText {

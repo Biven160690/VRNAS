@@ -55,7 +55,7 @@ export const PopularArticle = ({ articles }: Props) => {
                                             {description}
                                         </p>
                                     </div>
-                                    <button className={styles.cardButton}>
+                                    <button className={cx(styles.cardButton, index === currentIndexSlide && styles.cardButton_active)}>
                                         <Image
                                             src={`/common/arrow.png`}
                                             width={16}

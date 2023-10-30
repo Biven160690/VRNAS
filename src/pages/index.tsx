@@ -10,13 +10,10 @@ import {
   Articles as ArticleProps,
 } from "../graphql/__generated__/resolvers-types";
 
-import { Video } from "../components/common/Video";
-
 import styles from "./styles.module.scss";
 import React from "react";
 import { requestData } from "../utils/hoc/requestData";
 import { Service } from "../components/common/Service";
-import { Accordion } from "../components/common/Accordion";
 import { Testimonials } from "../components/common/TestimonialBlock";
 import { Pricing } from "../components/common/Pricing";
 import { Partners } from "../components/common/Partners";
@@ -38,9 +35,6 @@ export interface ClientsData {
     articles: ArticleProps;
   };
 }
-
-const LINK_VIDEO =
-  "https://res.cloudinary.com/codelife/video/upload/v1637805738/intro_l5ul1k.mp4";
 
 function Index({ data }: ClientsData) {
   const {

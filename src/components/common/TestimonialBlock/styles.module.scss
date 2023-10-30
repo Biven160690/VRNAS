@@ -27,6 +27,11 @@
     max-width: 709px;
     text-align: center;
     margin-bottom: 124px;
+    opacity: 0;
+
+    .circleBlock_startAnimation & {
+        animation: slide-in-bck-center .5s 2s cubic-bezier(.25, .46, .45, .94) both;
+    }
 
     @media screen and (max-width: 1116px) {
         margin-bottom: 130px;
@@ -68,6 +73,11 @@
     z-index: 10;
     width: 540px;
     height: 472px;
+    opacity: 0;
+
+    .circleBlock_startAnimation & {
+        animation: scale-in-center .5s 2.5s cubic-bezier(.25, .46, .45, .94) both;
+    }
 
     @media screen and (max-width: 650px) {
         bottom: 22px;
@@ -114,5 +124,27 @@
     @media screen and (max-width: 650px) {
         top: -40px;
         right: 60px;
+    }
+}
+
+@keyframes scale-in-center {
+    0% {
+        transform: scale(0);
+        opacity: 0
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1
+    }
+}
+
+@keyframes slide-in-bck-center {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
     }
 }

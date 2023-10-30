@@ -1,13 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
+import cx from 'classnames';
 
 export type Props = { partners: string[] };
 
 import styles from './styles.module.scss';
+import { useWindowScroll } from '@/utils/hooks/useWindowScroll';
 
 export const Partners = ({ partners }: Props) => {
+    const { isStartAnimation, ref } = useWindowScroll(900);
+
     return (
-        <div className={styles.base}>
+        <div
+            ref={ref}
+            className={cx(styles.base, isStartAnimation && styles.base_startAnimation)}
+        >
             <div className={styles.titleBlock}>
                 <h2 className={styles.title}>Our Trusted Partners</h2>
                 <p className={styles.subtitle}>

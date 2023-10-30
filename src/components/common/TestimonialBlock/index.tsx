@@ -1,17 +1,33 @@
 import React from 'react';
+import cx from 'classnames';
 
 import { Item } from './Item/Item';
 
 import { Testimonial } from '../../../graphql/__generated__/resolvers-types';
 import styles from './styles.module.scss';
+import { useWindowScroll } from '@/utils/hooks/useWindowScroll';
 
 export type Props = { testimonials: Testimonial[] };
 
 export const Testimonials = ({ testimonials }: Props) => {
+    const { isStartAnimation, ref } = useWindowScroll(950);
+
     return (
-        <div className={styles.circleBlock}>
+        <div
+            ref={ref}
+            className={cx(
+                styles.circleBlock,
+                isStartAnimation && styles.circleBlock_startAnimation
+            )}
+        >
             {testimonials.map((testimonial, index) => {
-                return <Item testimonial={testimonial} key={index} />;
+                return (
+                    <Item
+                        testimonial={testimonial}
+                        key={index}
+                        isStartAnimation={isStartAnimation}
+                    />
+                );
             })}
             <div className={styles.content}>
                 <div className={styles.titleBlock}>

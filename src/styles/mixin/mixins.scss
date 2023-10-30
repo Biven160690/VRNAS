@@ -54,10 +54,12 @@
             @if $brekpoint =='large' {
                 width: calc(#{var.$width-container} - #{$i - 1} * 180px);
                 padding-bottom: calc(#{var.$width-container} - #{$i - 1} * 180px);
+                animation: slide-in-bck-center .6s #{$i * 0.3}s cubic-bezier(.25, .46, .45, .94) both
             }
 
             .block {
                 @include position-point(var.$client-coordinates, $brekpoint, $i);
+                animation: bounce-in-top 0.8s #{$i * 0.4}s both;
             }
 
             @if $brekpoint =="small" {
@@ -80,5 +82,61 @@
                 }
             }
         }
+    }
+}
+
+@keyframes slide-in-bck-center {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1
+    }
+}
+
+@keyframes bounce-in-top {
+    0% {
+        transform: translateY(-500px);
+        animation-timing-function: ease-in;
+        opacity: 0
+    }
+
+    38% {
+        transform: translateY(0);
+        animation-timing-function: ease-out;
+        opacity: 1
+    }
+
+    55% {
+        transform: translateY(-65px);
+        animation-timing-function: ease-in
+    }
+
+    72% {
+        transform: translateY(0);
+        animation-timing-function: ease-out
+    }
+
+    81% {
+        transform: translateY(-28px);
+        animation-timing-function: ease-in
+    }
+
+    90% {
+        transform: translateY(0);
+        animation-timing-function: ease-out
+    }
+
+    95% {
+        transform: translateY(-8px);
+        animation-timing-function: ease-in
+    }
+
+    100% {
+        transform: translateY(0);
+        animation-timing-function: ease-out
     }
 }

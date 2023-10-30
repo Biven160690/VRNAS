@@ -13,7 +13,6 @@ export type Props = {
   height: number;
   children?: React.ReactNode;
   isNeedControls?: boolean;
-  isNeedScale?: boolean;
   classNames?: {
     base?: string;
     play?: string;
@@ -27,14 +26,12 @@ export type Props = {
 export const Video = ({
   src,
   isNeedControls = false,
-  isNeedScale = false,
   width,
   height,
   children,
   classNames,
 }: Props) => {
   const [controller, setController] = React.useState<VideoController>("play");
-  const [isScroll, setScroll] = React.useState<boolean>(false);
 
   const videoRef = React.useRef<HTMLVideoElement | null>(null);
   const handlerClickPlay = () => {
@@ -89,7 +86,6 @@ export const Video = ({
       <div
         className={cx(
           styles.video,
-          isNeedScale && isScroll && styles.video__startAnimation,
           classNames?.video
         )}
       >

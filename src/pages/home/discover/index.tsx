@@ -34,7 +34,6 @@ export const Discover = ({ clients }: Props) => {
                         Experience Unforgettable Events in VR. Bring your events
                         to life like never before with our VR services
                     </div>
-                    <div className={styles.mask}></div>
                 </div>
                 <div className={styles.buttonBlock}>
                     <button className={styles.button}>discover more</button>
