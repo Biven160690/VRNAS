@@ -1,0 +1,51 @@
+@use '../../../styles/mixin/mixins.scss' as mixin;
+@use '../../../styles/placeholder/placeholders' as *;
+@use '../../../styles/variables/variables' as var;
+
+
+.base {
+    @include mixin.container;
+}
+
+.body {
+    @include mixin.flexContainer;
+    @include mixin.border-image(linear-gradient(to left, #E95CE9, #0CBAF1));
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    padding-bottom: 80px;
+}
+
+.content {
+    @include mixin.flexContainer(center, center, column);
+    position: relative;
+    z-index: 2;
+}
+
+.ilumination {
+    width: 504px;
+    height: 559px;
+    background: url('../../../../public/36.png') no-repeat center / contain;
+    position: absolute;
+}
+
+.title {
+    @include mixin.typography(64, 600);
+    letter-spacing: -0.32px;
+    margin-bottom: 52px;
+}
+
+.navigationText {
+    @include mixin.flexContainer;
+}
+
+.text {
+    @include mixin.typography(16, 600);
+}
+
+.currentPage {
+    @include mixin.typography(16, 300, 28, var.$dark-grey);
+}

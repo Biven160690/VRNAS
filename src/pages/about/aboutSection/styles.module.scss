@@ -1,0 +1,121 @@
+@use '../../../styles/mixin/mixins' as mixins;
+@use '../../../styles/variables/variables' as var;
+@use '../../../styles/placeholder/placeholders.scss' as *;
+
+.about {
+    @include mixins.container;
+    @include mixins.flexContainer(space-between, flex-start);
+    margin-top: 150px;
+    margin-bottom: 150px;
+
+    @media screen and (max-width: 970px) {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+.description {
+    max-width: 625px;
+
+    @media screen and (max-width: 970px) {
+        margin-top: 0;
+        margin-bottom: 45px;
+        max-width: 562px;
+    }
+
+    @media screen and (max-width: 1120px) {
+        max-width: 462px;
+    }
+}
+
+.title {
+    @include mixins.typography(16, 500);
+    @extend %gradient-text;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(16, 500);
+    }
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(14, 500);
+        margin-bottom: 10px;
+    }
+}
+
+.subtitle {
+    @include mixins.typography(48, 600, 58);
+    letter-spacing: -0.24px;
+    margin-bottom: 12px;
+
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(48, 600, 58);
+    }
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(40, 600, 58);
+        margin-bottom: 10px;
+    }
+}
+
+.text {
+    @include mixins.typography(16, 300, 28);
+    color: var.$text-color;
+    max-width: 555px;
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(16, 300, 28);
+        color: var.$text-color;
+    }
+
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(14, 300, 28);
+        color: var.$text-color;
+    }
+}
+
+
+.bg {
+    width: 100%;
+    height: 622px;
+    max-width: 508px;
+    position: relative;
+
+    @media screen and (max-width: 1200px) {
+        margin-bottom: 55px;
+    }
+}
+
+.hero {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../../../public/pages/about/hero.png'), url('../../../../public/bg/about-bg.png');
+    background-position: 60px bottom, 100px bottom;
+    background-repeat: no-repeat;
+    background-size: contain, 430px 540px;
+}
+
+.illumination {
+    @extend %illumination;
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    left: 80px;
+    width: 100%;
+    max-width: 354px;
+    height: 508px;
+
+    @media screen and (max-width: 450px) {
+        top: 150px;
+        left: 30px;
+    }
+}
+
+.video {
+    position: absolute;
+    bottom: -23px;
+    left: 10px;
+}

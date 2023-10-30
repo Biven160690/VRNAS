@@ -57,6 +57,15 @@ const homePage = gql`
     }
 `;
 
+const aboutPage = gql`
+    query AboutPage {
+        advantages {
+            description
+            title
+        }
+    }
+`;
+
 const clients = gql`
     query Clients {
         clients {
@@ -271,4 +280,5 @@ export {
     testimonials,
     getContactInfo,
     homePage,
+    aboutPage
 };
