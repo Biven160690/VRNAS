@@ -1,0 +1,123 @@
+@use '../../../styles/mixin/mixins' as mixin;
+@use '../../../styles/variables/variables.scss' as var;
+@use '../../../styles/placeholder/placeholders' as *;
+
+%custon-button {
+    @include mixin.border-image;
+    @extend %button;
+    background: none;
+    color: var.$main-white;
+}
+
+.base {
+    @include mixin.container;
+    position: relative;
+
+    @media screen and (max-width: 700px) {
+        @include mixin.flexContainer(center, center, column);
+    }
+}
+
+.titleBlock {
+    @include mixin.flexContainer(space-between, center);
+    margin-bottom: 15px;
+}
+
+.description {
+    max-width: 520px;
+}
+
+.title {
+    @include mixin.typography(16, 500);
+    @extend %gradient-text;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixin.typography(14, 500);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixin.typography(16, 500);
+    }
+
+    @media screen and (max-width: 700px) {
+        margin-bottom: 5px;
+        @include mixin.typography(12, 300);
+    }
+}
+
+.subtitle {
+    @include mixin.typography(48, 600, 58);
+    letter-spacing: -0.24px;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 1200px) {
+        @include mixin.typography(40, 600, 58);
+        margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixin.typography(48, 600, 58);
+    }
+
+    @media screen and (max-width: 700px) {
+        margin-bottom: 5px;
+        @include mixin.typography(35, 500, 48);
+    }
+}
+
+.titleButton {
+    @extend %custon-button;
+
+    @media screen and (max-width: 700px) {
+        display: none;
+    }
+}
+
+.button {
+    @extend %custon-button;
+    margin-top: 45px;
+
+    @media screen and (min-width: 700px) {
+        display: none;
+    }
+}
+
+.teamList {
+    @include mixin.flexContainer;
+    flex-wrap: wrap;
+    gap: 20px 10px;
+}
+
+.card {
+    @include mixin.flexContainer;
+    position: relative;
+    height: 385px;
+    flex: 0 1 290px;
+    border: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(94.92deg, rgba(255, 255, 255, .3) -0.29%, rgba(255, 255, 255, 0) 100%);
+}
+
+.bg {
+    position: absolute;
+    width: 274px;
+    height: 370px;
+    background: linear-gradient(180deg, rgba(50, 70, 188, 0.00) 0%, #192883 100%);
+}
+
+.userInfo {
+    position: absolute;
+    z-index: 5;
+    text-align: center;
+    bottom: 15px;
+}
+
+.name {
+    @include mixin.typography(16, 600);
+}
+
+.role {
+    @include mixin.typography(12, 400, 20, var.$light-grey);
+}

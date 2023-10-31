@@ -63,6 +63,13 @@ const aboutPage = gql`
             description
             title
         }
+
+        team {
+            firstName
+            img
+            lastName
+            role
+        }
     }
 `;
 
@@ -73,15 +80,6 @@ const clients = gql`
         }
     }
 `;
-
-// const advantages = gql`
-//     query Advantages {
-//         advantages {
-//             amount
-//             title
-//         }
-//     }
-// `;
 
 const advantages = gql`
     query Advantages {
@@ -280,5 +278,5 @@ export {
     testimonials,
     getContactInfo,
     homePage,
-    aboutPage
+    aboutPage,
 };

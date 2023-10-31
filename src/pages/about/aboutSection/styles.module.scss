@@ -19,14 +19,14 @@
 .description {
     max-width: 625px;
 
+    @media screen and (max-width: 1120px) {
+        max-width: 462px;
+    }
+
     @media screen and (max-width: 970px) {
         margin-top: 0;
         margin-bottom: 45px;
         max-width: 562px;
-    }
-
-    @media screen and (max-width: 1120px) {
-        max-width: 462px;
     }
 }
 
@@ -35,13 +35,13 @@
     @extend %gradient-text;
     margin-bottom: 12px;
 
-    @media screen and (max-width: 970px) {
-        @include mixins.typography(16, 500);
-    }
-
     @media screen and (max-width: 1200px) {
         @include mixins.typography(14, 500);
         margin-bottom: 10px;
+    }
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(16, 500);
     }
 }
 
@@ -50,15 +50,15 @@
     letter-spacing: -0.24px;
     margin-bottom: 12px;
 
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(40, 600, 58);
+        margin-bottom: 10px;
+    }
 
     @media screen and (max-width: 970px) {
         @include mixins.typography(48, 600, 58);
     }
 
-    @media screen and (max-width: 1200px) {
-        @include mixins.typography(40, 600, 58);
-        margin-bottom: 10px;
-    }
 }
 
 .text {
@@ -66,15 +66,16 @@
     color: var.$text-color;
     max-width: 555px;
 
+    @media screen and (max-width: 1200px) {
+        @include mixins.typography(14, 300, 28);
+        color: var.$text-color;
+    }
+
     @media screen and (max-width: 970px) {
         @include mixins.typography(16, 300, 28);
         color: var.$text-color;
     }
 
-    @media screen and (max-width: 1200px) {
-        @include mixins.typography(14, 300, 28);
-        color: var.$text-color;
-    }
 }
 
 

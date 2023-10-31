@@ -300,7 +300,7 @@ export const data = {
             firstName: 'Bondan',
             lastName: ' Prabowo',
             role: 'CEO',
-            img: '1',
+            img: 'bondan',
             contactInfo: [
                 { name: 'twitter', link: '' },
                 { name: 'fa', link: '' },
@@ -312,7 +312,7 @@ export const data = {
             firstName: 'Bayu',
             lastName: 'Aji',
             role: 'VR Development',
-            img: '2',
+            img: 'bayu',
             contactInfo: [
                 { name: 'twitter', link: '' },
                 { name: 'fa', link: '' },
@@ -323,7 +323,7 @@ export const data = {
             firstName: 'Agung',
             lastName: ' Brandon',
             role: 'VR Artist',
-            img: '3',
+            img: 'agung',
             contactInfo: [
                 { name: 'twitter', link: '' },
                 { name: 'fa', link: '' },
@@ -334,7 +334,7 @@ export const data = {
             firstName: 'Aldo',
             lastName: ' Boy',
             role: '3D Designer',
-            img: '4',
+            img: 'aril',
             contactInfo: [
                 { name: 'twitter', link: '' },
                 { name: 'fa', link: '' },
