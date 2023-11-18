@@ -10,7 +10,7 @@ export const Title = ({ title }: Props) => {
             <div className={styles.body}>
                 <div className={styles.ilumination} />
                 <div className={styles.content}>
-                    <div className={styles.title}>{title}</div>
+                    <h3 className={styles.title}>{title}</h3>
                     <div className={styles.navigationText}>
                         <p className={styles.text}>Home</p>
                         <svg

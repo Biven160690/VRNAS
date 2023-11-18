@@ -9,19 +9,30 @@ export type Props = {
     advantage: Advantage;
     handleClick: () => void;
     isShowDescription: boolean;
+    classNames?: {
+        baseItem?: string;
+        description?: string;
+        titleBlock?: string;
+    };
 };
 
-export const Item = ({ advantage, handleClick, isShowDescription }: Props) => {
+export const Item = ({
+    advantage,
+    handleClick,
+    isShowDescription,
+    classNames,
+}: Props) => {
     const { title, description } = advantage;
 
     return (
         <div
             className={cx(
                 styles.base,
-                isShowDescription && styles.base_showDescription
+                isShowDescription && styles.base_showDescription,
+                classNames?.baseItem
             )}
         >
-            <div className={styles.titleBlock}>
+            <div className={cx(styles.titleBlock, classNames?.titleBlock)}>
                 <h3 className={styles.title}>{title}</h3>
                 <button className={styles.button} onClick={() => handleClick()}>
                     <Image
@@ -33,7 +44,9 @@ export const Item = ({ advantage, handleClick, isShowDescription }: Props) => {
                     />
                 </button>
             </div>
-            <p className={styles.description}>{description}</p>
+            <p className={cx(styles.description, classNames?.description)}>
+                {description}
+            </p>
         </div>
     );
 };

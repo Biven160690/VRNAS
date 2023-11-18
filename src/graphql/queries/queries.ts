@@ -70,6 +70,14 @@ const aboutPage = gql`
             lastName
             role
         }
+
+        partners
+
+        faq {
+            description
+            title
+            type
+        }
     }
 `;
 

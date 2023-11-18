@@ -1,0 +1,51 @@
+@use '../../../styles/variables/variables' as var;
+@use '../../../styles/mixin/mixins' as mixins;
+@use '../../../styles/function/function' as function;
+@use '../../../styles/placeholder/placeholders' as *;
+
+
+.base {
+    width: 790px;
+    height: 800px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.content {
+    text-align: center;
+}
+
+.title {
+    @include mixins.typography(16, 500);
+    @extend %gradient-text;
+    margin-bottom: 12px;
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(14, 500);
+    }
+
+    @media screen and (max-width: 750px) {
+        @include mixins.typography(12, 500);
+    }
+}
+
+.subtitle {
+    @include mixins.typography(48, 600, 58);
+    margin-bottom: 24px;
+    letter-spacing: -0.24px;
+
+    @media screen and (max-width: 970px) {
+        @include mixins.typography(40, 600, 58);
+    }
+
+    @media screen and (max-width: 750px) {
+        @include mixins.typography(24, 500);
+    }
+}
+
+.text {
+    @include mixins.typography(16, 300, 28, var.$dark-grey);
+    margin-bottom: 48px;
+}
+
+.illumination {}

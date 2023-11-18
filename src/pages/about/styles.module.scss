@@ -38,19 +38,29 @@
 }
 
 .advantegesText {
-    @include mixins.typography(48, 600, 58);
-    letter-spacing: -0.24px;
-    margin-bottom: 12px;
+    @include mixins.flexContainer(center, center, '', wrap);
 
-    @media screen and (max-width: 970px) {
+    span {
         @include mixins.typography(48, 600, 58);
+        margin-left: 15px;
+    
+        @media screen and (max-width: 970px) {
+            @include mixins.typography(48, 600, 58);
+        }
+    
+        @media screen and (max-width: 1200px) {
+            @include mixins.typography(40, 600, 58);
+        }
     }
 
-    @media screen and (max-width: 1200px) {
-        @include mixins.typography(40, 600, 58);
-        margin-bottom: 10px;
+    @for $i from 1 through 5 {
+       span:nth-child(#{$i}) {
+            @include mixins.color-word($i);
+            animation: color-animation 2s linear infinite;
+        }
     }
 }
+
 
 .chooseBase {
     flex-direction: row-reverse;
@@ -65,3 +75,43 @@
 .chooseVideo {
     right: 0;
 }
+
+.partners {
+    @include mixins.container;
+    max-width: #{var.$partner-width-container}px;
+    position: relative;
+    height: 1055px;
+    overflow: hidden;
+    margin-top: 150px;
+
+    @media screen and (max-width: 950px) {
+        height: 950px;
+    }
+
+    @media screen and (max-width: 780px) {
+        height: 790px;
+    }
+
+    @media screen and (max-width: 650px) {
+        height: 680px;
+    }
+
+    @media screen and (max-width: 500px) {
+        height: 520px;
+    }
+}
+
+.faq {
+    position: relative;
+    margin-bottom: 150px;
+}
+
+@keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-2)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-3)}
+    99%   {color: var(--color-3)}
+    100%  {color: var(--color-1)}
+}  

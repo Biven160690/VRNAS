@@ -48,23 +48,43 @@
 }
 
 .subtitle {
-    @include mixin.typography(48, 600, 58);
-    letter-spacing: -0.24px;
     margin-bottom: 12px;
 
     @media screen and (max-width: 1200px) {
-        @include mixin.typography(40, 600, 58);
         margin-bottom: 10px;
-    }
-
-    @media screen and (max-width: 970px) {
-        @include mixin.typography(48, 600, 58);
     }
 
     @media screen and (max-width: 700px) {
         margin-bottom: 5px;
-        @include mixin.typography(35, 500, 48);
     }
+
+    @for $i from 1 through 20 {
+        span:nth-child(#{$i}) {
+            display: inline-block;
+            @include mixin.typography(48, 600, 58);
+            letter-spacing: -0.24px;
+            animation: flip 4s infinite;
+            animation-delay: calc(.2s * $i);
+
+            @media screen and (max-width: 1200px) {
+                @include mixin.typography(40, 600, 58);
+            }
+        
+            @media screen and (max-width: 970px) {
+                @include mixin.typography(48, 600, 58);
+            }
+        
+            @media screen and (max-width: 700px) {
+                @include mixin.typography(35, 500, 48);
+            }
+        }
+    }
+}
+
+@keyframes flip {
+  0%,80% {
+    transform: rotateY(360deg) 
+  }
 }
 
 .titleButton {

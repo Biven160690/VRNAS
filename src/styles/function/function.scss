@@ -1,3 +1,6 @@
+@use '../variables/variables.scss' as var;
+@use "sass:map";
+
 @function get-style($children, $small-breakpoint-style, $large-breakpoint-style) {
     @if $children == 2 or $children == 4 or $children == 5 or $children == 6 {
         @return $small-breakpoint-style;
